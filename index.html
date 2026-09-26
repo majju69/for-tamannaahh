@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>For Tamannaahh 💗</title>
+  <meta name="description" content="A little something for your birthday." />
+  <meta property="og:title" content="For Tamannaahh 💗" />
+  <meta property="og:description" content="A little something for your birthday." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#fbe4ec" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💗</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="hearts" aria-hidden="true"></canvas>
+
+  <!-- Countdown gate -->
+  <section id="gate" class="gate" hidden>
+    <p class="gate-kicker">psst…</p>
+    <h1 class="script">Something special for <span data-name></span> opens in</h1>
+    <div class="countdown" role="timer" aria-live="polite">
+      <div><span id="cd-d">00</span><small>days</small></div>
+      <div><span id="cd-h">00</span><small>hours</small></div>
+      <div><span id="cd-m">00</span><small>mins</small></div>
+      <div><span id="cd-s">00</span><small>secs</small></div>
+    </div>
+    <p class="gate-note">come back at midnight 🌙</p>
+  </section>
+
+  <main id="site" hidden>
+    <header class="hero">
+      <p class="hero-kicker">28 · 09</p>
+      <h1 class="script hero-title">Happy <span data-age></span> Birthday,<br /><span data-name></span> 💗</h1>
+      <p class="hero-sub" id="hero-sub"></p>
+      <a class="scroll-hint" href="#gallery" aria-label="Scroll down">↓</a>
+    </header>
+
+    <section id="gallery" class="section">
+      <h2 class="script">Some of my favourite pictures of you</h2>
+      <div class="polaroids" id="polaroids"></div>
+    </section>
+
+    <section id="letter" class="section">
+      <h2 class="script">A letter for you</h2>
+      <button class="envelope" id="envelope" aria-label="Open the letter">
+        <span class="env-flap"></span>
+        <span class="env-body"></span>
+        <span class="env-seal">💌</span>
+      </button>
+      <p class="tap-hint" id="tap-hint">tap to open</p>
+      <article class="paper" id="paper" hidden>
+        <div id="letter-text"></div>
+        <p class="sign script" id="letter-sign"></p>
+      </article>
+    </section>
+
+    <section id="reasons" class="section">
+      <h2 class="script">Reasons I like you</h2>
+      <p class="section-sub">tap a card</p>
+      <div class="cards" id="cards"></div>
+    </section>
+
+    <footer class="footer">
+      <p class="script">Happy birthday, <span data-name></span>.</p>
+      <p>made with 💗 by <span id="from"></span></p>
+    </footer>
+  </main>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lb-close" aria-label="Close">×</button>
+    <figure>
+      <img id="lb-img" alt="" />
+      <figcaption id="lb-cap"></figcaption>
+    </figure>
+  </div>
+
+  <script src="content.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
