@@ -8,12 +8,11 @@ window.CONTENT = {
 
   // Drop photos into /images and list them here. Captions are optional.
   photos: [
-    { src: "images/01.jpg", caption: "that smile tho" },
-    { src: "images/02.jpg", caption: "my favourite view" },
-    { src: "images/03.jpg", caption: "a moment I keep replaying" },
-    { src: "images/04.jpg", caption: "certified cutie" },
-    { src: "images/05.jpg", caption: "golden hour, golden you" },
-    { src: "images/06.jpg", caption: "just look at her" },
+    { src: "images/01.jpeg", caption: "that smile tho" },
+    { src: "images/02.jpeg", caption: "my favourite view" },
+    { src: "images/03.jpeg", caption: "certified cutie" },
+    { src: "images/04.jpeg", caption: "golden hour, golden you" },
+    { src: "images/05.jpeg", caption: "just look at her" },
   ],
 
   // Blank lines separate paragraphs.

@@ -105,13 +105,14 @@
     const btn = document.createElement("button");
     btn.className = "polaroid reveal";
     btn.style.setProperty("--tilt", `${(i % 2 ? 1 : -1) * (2 + Math.random() * 3)}deg`);
-    btn.innerHTML = `<div class="ph">💗</div><p></p>`;
+    btn.innerHTML = `<div class="ph"><span>💗</span></div><p></p>`;
     btn.querySelector("p").textContent = p.caption || "";
     const img = new Image();
     img.loading = "lazy";
     img.alt = p.caption || `Photo ${i + 1}`;
-    img.onload = () => { const ph = btn.querySelector(".ph"); ph.textContent = ""; ph.appendChild(img); };
+    img.onload = () => img.classList.add("loaded");
     img.src = p.src;
+    btn.querySelector(".ph").appendChild(img);
     btn.addEventListener("click", () => {
       if (!img.complete || !img.naturalWidth) return;
       $("lb-img").src = p.src;
