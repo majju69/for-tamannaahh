@@ -220,11 +220,13 @@ main.revealed .hero > *:nth-child(4) { animation-delay: 0.8s; }
 
 /* ---------- Flip cards ---------- */
 .cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 16px;
 }
 .card {
+  width: min(200px, calc(50% - 8px));
   aspect-ratio: 1;
   perspective: 900px;
   background: none;
