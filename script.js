@@ -127,30 +127,39 @@
 
   // ---------- Letter ----------
   const envelope = $("envelope");
-  let typing = null;
+  const paper = $("paper");
+  const out = $("letter-text");
+  const sign = $("letter-sign");
+  const paras = C.letter.trim().split(/\n\s*\n/);
+  sign.append(C.signOff, document.createElement("br"), C.from);
+  let typing = null, opening = null, typed = false;
+
+  function finish() {
+    clearInterval(typing);
+    typed = true;
+    out.innerHTML = "";
+    paras.forEach((t) => { const p = document.createElement("p"); p.textContent = t; out.appendChild(p); });
+    sign.classList.add("show");
+  }
+
+  // Odd taps open the letter, even taps close it.
   envelope.addEventListener("click", () => {
-    if (envelope.classList.contains("open")) return;
-    envelope.classList.add("open");
-    $("tap-hint").hidden = true;
-    setTimeout(() => {
-      $("paper").hidden = false;
-      typeLetter();
-    }, 700);
+    const hint = $("tap-hint");
+    if (envelope.classList.toggle("open")) {
+      hint.textContent = "tap to close";
+      opening = setTimeout(() => {
+        paper.hidden = false;
+        if (!typed) typeLetter();
+      }, 700);
+    } else {
+      clearTimeout(opening);
+      if (!paper.hidden) finish(); // if it was mid-typing, reopening shows the whole letter
+      paper.hidden = true;
+      hint.textContent = "tap to open";
+    }
   });
 
   function typeLetter() {
-    const out = $("letter-text");
-    const paras = C.letter.trim().split(/\n\s*\n/);
-    const sign = $("letter-sign");
-    sign.innerHTML = "";
-    sign.append(C.signOff, document.createElement("br"), C.from);
-
-    const finish = () => {
-      clearInterval(typing);
-      out.innerHTML = "";
-      paras.forEach((t) => { const p = document.createElement("p"); p.textContent = t; out.appendChild(p); });
-      sign.classList.add("show");
-    };
     if (reduceMotion) return finish();
 
     let pi = 0, ci = 0;
@@ -169,9 +178,9 @@
         if (pi < paras.length) { p = document.createElement("p"); out.appendChild(p); p.appendChild(caret); }
       }
     }, 28);
-    // Tap the letter to skip the typing
-    $("paper").addEventListener("click", finish, { once: true });
   }
+  // Tap the letter to skip the typing
+  paper.addEventListener("click", () => { if (!typed) finish(); });
 
   // ---------- Reasons ----------
   const cards = $("cards");
