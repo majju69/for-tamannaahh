@@ -3,8 +3,6 @@
 window.CONTENT = {
   name: "Tamannaahh",
   age: 23,
-  // Midnight IST on her birthday. The site stays locked behind a countdown until then.
-  unlockAt: "2026-09-28T00:00:00+05:30",
 
   heroSubtitle: "Today the world got a little softer, because it's your day.",
 

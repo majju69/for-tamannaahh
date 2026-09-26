@@ -195,38 +195,7 @@
     io.observe(el);
   });
 
-  // ---------- Countdown gate ----------
-  const params = new URLSearchParams(location.search);
-  const target = params.has("t") ? Date.now() + Number(params.get("t")) * 1000 : new Date(C.unlockAt).getTime();
-  const gate = $("gate"), site = $("site");
-
-  function showSite(celebrate) {
-    gate.hidden = true;
-    site.hidden = false;
-    site.classList.add("revealed");
-    if (celebrate) burst();
-  }
-
-  if (params.has("preview") || Date.now() >= target) {
-    showSite(false);
-  } else {
-    gate.hidden = false;
-    const pad = (n) => String(n).padStart(2, "0");
-    const update = () => {
-      const ms = target - Date.now();
-      if (ms <= 0) {
-        clearInterval(timer);
-        gate.classList.add("leaving");
-        setTimeout(() => { showSite(true); scrollTo(0, 0); }, 900);
-        return;
-      }
-      const s = Math.floor(ms / 1000);
-      $("cd-d").textContent = pad(Math.floor(s / 86400));
-      $("cd-h").textContent = pad(Math.floor((s % 86400) / 3600));
-      $("cd-m").textContent = pad(Math.floor((s % 3600) / 60));
-      $("cd-s").textContent = pad(s % 60);
-    };
-    const timer = setInterval(update, 1000);
-    update();
-  }
+  // ---------- Show site ----------
+  $("site").classList.add("revealed");
+  setTimeout(burst, 300);
 })();
